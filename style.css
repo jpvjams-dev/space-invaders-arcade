@@ -1,0 +1,97 @@
+* {
+box-sizing: border-box;
+}
+
+html,
+body {
+margin: 0;
+min-height: 100%;
+background: #030609;
+color: #a8f7b0;
+font-family: monospace;
+}
+
+body {
+min-height: 100dvh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 12px;
+}
+
+.arcade {
+width: min(96vw, calc((100dvh - 58px) * 4 / 3), 1000px);
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 9px;
+}
+
+.screen {
+position: relative;
+width: 100%;
+aspect-ratio: 4 / 3;
+overflow: hidden;
+background: #000;
+border: 2px solid #b9d2c5;
+box-shadow:
+0 0 10px rgba(91, 255, 151, 0.18),
+0 0 35px rgba(35, 160, 100, 0.12),
+inset 0 0 25px rgba(60, 255, 130, 0.04);
+}
+
+#game {
+display: block;
+width: 100%;
+height: 100%;
+background: #000;
+image-rendering: pixelated;
+}
+
+.scanlines,
+.screen-glow {
+position: absolute;
+inset: 0;
+pointer-events: none;
+}
+
+.scanlines {
+opacity: 0.16;
+background: repeating-linear-gradient(
+to bottom,
+transparent 0px,
+transparent 3px,
+rgba(0, 0, 0, 0.55) 4px
+);
+}
+
+.screen-glow {
+background: radial-gradient(
+ellipse at center,
+transparent 55%,
+rgba(0, 30, 12, 0.18) 100%
+);
+}
+
+.controls {
+width: 100%;
+text-align: center;
+font-size: clamp(9px, 1.7vw, 13px);
+line-height: 1.5;
+color: #8c9a96;
+}
+
+@media (max-height: 420px) {
+body {
+padding: 5px;
+}
+
+.arcade {
+width: min(98vw, calc((100dvh - 30px) * 4 / 3));
+gap: 4px;
+}
+
+.controls {
+font-size: 9px;
+}
+}
